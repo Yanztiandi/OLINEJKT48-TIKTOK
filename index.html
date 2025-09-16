@@ -3,44 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OLINEJKT48 SnapTik Clone Ultra</title>
+<title>OLINEJKT48-TIKTOK</title>
 <style>
 body{
   margin:0; padding:0; font-family:Arial,sans-serif;
   background: url('https://files.catbox.moe/dkdkdv.jpeg') no-repeat center center fixed;
   background-size: cover;
   color:#fff; text-align:center;
-  overflow-x:hidden;
-  position:relative;
+  overflow-x:hidden; position:relative;
 }
-/* Partikel neon */
+
+/* Partikel neon ringan */
 .particle{
-  position:absolute; width:10px; height:10px; border-radius:50%; background:rgba(255,0,255,0.6);
-  animation: moveParticle 5s linear infinite;
+  position:absolute; border-radius:50%; background:rgba(255,0,255,0.5);
+  animation: moveParticle 8s linear infinite;
 }
 @keyframes moveParticle{
   0%{transform:translate(0,0);}
   100%{transform:translate(calc(100vw - 10px), calc(100vh - 10px));}
 }
 
-/* Container transparan */
+/* Container responsif */
 .container{
-  max-width:600px; 
-  margin:50px auto; 
+  max-width:95%; 
+  margin:30px auto; 
   background: rgba(0,0,0,0); 
-  padding:30px; 
-  border-radius:15px;
-  position:relative;
+  padding:15px; 
+  border-radius:15px; 
+  position:relative; 
   z-index:2;
 }
 
 /* Header rainbow animasi */
 h1{
-  font-size:36px; font-weight:bold; 
+  font-weight:bold; 
   background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   animation: rainbow 5s linear infinite;
   text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+  margin-bottom:10px;
+  font-size:calc(20px + 3vw);
 }
 @keyframes rainbow{
   0%{background-position:0% 50%;}
@@ -48,32 +50,27 @@ h1{
   100%{background-position:0% 50%;}
 }
 
-/* Input */
 input{
-  width:80%; padding:15px; border-radius:10px; border:none; margin:20px 0;
-  font-size:16px;
+  width:90%; padding:12px; border-radius:10px; border:none; margin:15px 0;
+  font-size:calc(12px + 1vw);
 }
-
-/* Tombol rainbow neon + glow + flash */
 button{
-  padding:15px 30px; border:none; border-radius:30px;
-  font-size:18px; font-weight:bold; cursor:pointer;
+  padding:12px 25px; border:none; border-radius:30px;
+  font-size:calc(14px + 1vw); font-weight:bold; cursor:pointer;
   color:white; 
   background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
   background-size: 400% 400%;
   animation: rainbowButton 4s ease infinite, glow 1.5s ease-in-out infinite alternate;
   text-shadow: 1px 1px 2px #000;
-  position:relative; overflow:hidden;
-  outline:none; transition:0.3s;
+  position:relative; overflow:hidden; outline:none; transition:0.3s;
 }
 button:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 25px rgba(255,255,255,0.9),0 0 50px rgba(255,0,255,0.7),0 0 75px rgba(0,255,255,0.5);
+  transform:scale(1.05); 
+  box-shadow:0 0 25px rgba(255,255,255,0.9),
+             0 0 50px rgba(255,0,255,0.7),
+             0 0 75px rgba(0,255,255,0.5);
 }
-button span{
-  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-  animation: blink 1s infinite;
-}
+
 @keyframes rainbowButton{
   0%{background-position:0% 50%;}
   50%{background-position:100% 50%;}
@@ -83,74 +80,58 @@ button span{
   0%{box-shadow:0 0 5px rgba(255,255,255,0.3);}
   100%{box-shadow:0 0 20px rgba(255,255,255,0.7);}
 }
-@keyframes blink{
-  0%,100%{opacity:1;} 50%{opacity:0.3;}
-}
 
-/* Result / Thumbnail */
 #result{ margin-top:20px; }
 .thumbnail{ max-width:100%; border-radius:15px; margin-top:10px; box-shadow:0 0 20px rgba(255,0,128,0.7);}
 
-/* Footer gradient bergerak */
-.footer{ 
-  margin-top:40px; font-weight:bold; font-size:20px; 
+.footer{
+  margin-top:30px; font-weight:bold; font-size:calc(16px + 1vw); color:#ff66aa; 
+  text-shadow:1px 1px 3px rgba(0,0,0,0.7);
   background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   animation: footerGradient 6s linear infinite;
-  text-shadow:1px 1px 3px rgba(0,0,0,0.7);
 }
+
 @keyframes footerGradient{
   0%{background-position:0% 50%;}
   50%{background-position:100% 50%;}
   100%{background-position:0% 50%;}
 }
 
-/* Spinner OLINEJKT48 */
 .loading{
-  border:6px solid #333; border-top:6px solid #ff0050;
-  border-radius:50%; width:50px; height:50px; margin:20px auto; animation:spin 1s linear infinite; position:relative;
+  border:5px solid #333; border-top:5px solid #ff0050; border-radius:50%; 
+  width:40px; height:40px; margin:20px auto; animation:spin 1s linear infinite; position:relative;
 }
-.loading::after{
-  content:"OLINEJKT48"; position:absolute; top:50%; left:50%;
-  transform:translate(-50%,-50%); font-size:12px; font-weight:bold; color:#ff66aa;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-}
-@keyframes spin{
-  0%{transform:rotate(0deg);}
-  100%{transform:rotate(360deg);}
-}
+@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
 </style>
 </head>
 <body>
 
-<!-- Partikel background -->
-<div id="particles"></div>
-
 <div class="container">
-  <h1>OLINEJKT48 SnapTik Clone Ultra</h1>
-  <p style="text-shadow:1px 1px 2px rgba(0,0,0,0.7);">Tempel URL TikTok di bawah lalu klik Download HD</p>
+  <h1>OLINEJKT48-TIKTOK</h1>
+  <p style="text-shadow:1px 1px 2px rgba(0,0,0,0.7); font-size:calc(12px + 1vw);">Tempel URL TikTok di bawah lalu klik Download HD</p>
   <input type="text" id="tiktokUrl" placeholder="Tempel URL TikTok di sini...">
-  <button onclick="playClick();downloadVideo()"><span>OLINEJKT48</span> Download HD</button>
+  <button onclick="playClick();downloadVideo()">Download HD</button>
   <div id="result"></div>
-  <div class="footer">OLINEJKT48</div>
+  <div class="footer">OLINEJKT48-TIKTOK</div>
 </div>
 
 <audio id="clickSound" src="https://freesound.org/data/previews/256/256113_3263906-lq.mp3"></audio>
 
 <script>
-// Ganti YOUR_RAPIDAPI_KEY dengan API Key RapidAPI TikTok milikmu
 const API_KEY="YOUR_RAPIDAPI_KEY"; 
 const API_HOST="tiktok-api23.p.rapidapi.com";
 const API_URL="https://tiktok-api23.p.rapidapi.com/video";
 
-// Partikel neon
-for(let i=0;i<50;i++){
+/* Partikel ringan */
+for(let i=0;i<20;i++){
   const p=document.createElement('div');
   p.className='particle';
   p.style.top=Math.random()*100+'%';
   p.style.left=Math.random()*100+'%';
-  p.style.width=Math.random()*8+2+'px';
-  p.style.height=p.style.width;
+  const size=Math.random()*5+2;
+  p.style.width=size+'px';
+  p.style.height=size+'px';
   document.body.appendChild(p);
 }
 
@@ -184,8 +165,8 @@ async function downloadVideo(){
       resultDiv.innerHTML=`
         <img src="${video.thumbnail}" class="thumbnail" alt="Thumbnail Video">
         <p><b>Video berhasil didapat!</b></p>
-        <a href="${video.play}" target="_blank">Download Normal Tanpa Watermark</a>
-        <a href="${video.wmplay}" target="_blank">Download Dengan Watermark</a>
+        <a href="${video.play}" target="_blank">Download Normal Tanpa Watermark</a><br>
+        <a href="${video.wmplay}" target="_blank">Download Dengan Watermark</a><br>
         <a href="${video.music}" target="_blank">Download Audio (MP3)</a>
       `;
     }else{ resultDiv.innerHTML="Gagal mengambil video!"; }
