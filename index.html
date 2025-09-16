@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restoran Kampong Kite</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Loading screen */
+    #loading {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #166534;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 9999;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+    }
+    #loading img {
+      width: 100px;
+      margin-bottom: 15px;
+    }
+    .fade-out { opacity: 0; transition: opacity 1s ease-out; }
+    .fade-in {
+      opacity: 0; transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+    .fade-in.show { opacity: 1; transform: translateY(0); }
+
+    /* Background untuk tiap menu */
+    .menu-bg {
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .menu-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+    .menu-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Tombol */
+    .btn {
+      background: #16a34a;
+      color: white;
+      padding: 6px 12px;
+      margin: 4px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+    .btn:hover { background: #15803d; }
+
+    /* Dark mode */
+    .dark body { background: #111827; color: #f3f4f6; }
+    .dark header { background: #1f2937 !important; }
+    .dark footer { background: #1f2937 !important; }
+    .dark section { background: #1f2937 !important; }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800 transition-colors duration-500">
+
+  <!-- LOADING -->
+  <div id="loading">
+    <img src="https://i.ibb.co/Sc3J7xX/logo.png" alt="Logo Restoran">
+    <p>WELCOME TO RESTORAN KAMPONG KITE</p>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-green-700 text-white p-6 flex items-center justify-between shadow-lg">
+    <div class="flex items-center space-x-3">
+      <img src="https://i.ibb.co/Sc3J7xX/logo.png" alt="Logo" class="w-12 h-12 rounded-full">
+      <h1 class="text-2xl font-bold">Restoran Kampong Kite</h1>
+    </div>
+    <nav class="space-x-4 flex items-center">
+      <a href="#menu" class="hover:underline">Menu</a>
+      <a href="#lokasi" class="hover:underline">Lokasi</a>
+      <a href="#kontak" class="hover:underline">Kontak</a>
+      <button onclick="toggleDarkMode()" class="ml-4 px-3 py-1 rounded bg-gray-200 text-black dark:bg-gray-700 dark:text-white">🌙/☀️</button>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="bg-green-600 text-white text-center py-20">
+    <h2 class="text-4xl font-bold mb-4">Selamat Datang di Restoran Kampong Kite</h2>
+    <p class="text-lg">Nikmati hidangan khas dengan rasa kampung yang autentik</p>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-6xl mx-auto p-6 space-y-10" id="menu">
+
+    <!-- ===================== MENU AYAM ===================== -->
+    <section class="menu-bg rounded-xl p-6 fade-in" style="background-image:url('https://source.unsplash.com/800x600/?fried-chicken');">
+      <div class="menu-content">
+        <h2 class="text-2xl font-bold text-white mb-4">🍗 Menu Ayam</h2>
+        <div class="grid md:grid-cols-2 gap-4 text-white">
+          <div class="p-4 border rounded-lg bg-black/40">
+            <h3>Ayam Goreng</h3>
+            <button onclick="choosePortion('Ayam Goreng')" class="btn">Buy</button>
+          </div>
+          <div class="p-4 border rounded-lg bg-black/40">
+            <h3>Ayam Bakar</h3>
+            <button onclick="choosePortion('Ayam Bakar')" class="btn">Buy</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MENU IKAN ===================== -->
+    <section class="menu-bg rounded-xl p-6 fade-in" style="background-image:url('https://source.unsplash.com/800x600/?fish-grill');">
+      <div class="menu-content">
+        <h2 class="text-2xl font-bold text-white mb-4">🐟 Menu Ikan</h2>
+        <div class="grid md:grid-cols-2 gap-4 text-white">
+          <div class="p-4 border rounded-lg bg-black/40">
+            <h3>Ikan Bakar</h3>
+            <button onclick="choosePortion('Ikan Bakar')" class="btn">Buy</button>
+          </div>
+          <div class="p-4 border rounded-lg bg-black/40">
+            <h3>Kari Ikan</h3>
+            <button onclick="choosePortion('Kari Ikan')" class="btn">Buy</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MENU SAYURAN ===================== -->
+    <section class="menu-bg rounded-xl p-6 fade-in" style="background-image:url('https://source.unsplash.com/800x600/?vegetables');">
+      <div class="menu-content">
+        <h2 class="text-2xl font-bold text-white mb-4">🥦 Menu Sayuran</h2>
+        <div class="grid md:grid-cols-2 gap-4 text-white">
+          <div class="p-4 border rounded-lg bg-black/40">
+            <h3>Kangkung Belacan</h3>
+            <button onclick="choosePortion('Kangkung Belacan')" class="btn">Buy</button>
+          </div>
+          <div class="p-4 border rounded-lg bg-black/40">
+            <h3>Capcay</h3>
+            <button onclick="choosePortion('Capcay')" class="btn">Buy</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MENU MINUMAN ===================== -->
+    <section class="menu-bg rounded-xl p-6 fade-in" style="background-image:url('https://source.unsplash.com/800x600/?drinks');">
+      <div class="menu-content">
+        <h2 class="text-2xl font-bold text-white mb-4">🥤 Menu Minuman</h2>
+        <div class="grid md:grid-cols-2 gap-4 text-white">
+          <div class="p-4 border rounded-lg bg-black/40">
+            <h3>Es Teh Manis</h3>
+            <button onclick="choosePortion('Es Teh Manis')" class="btn">Buy</button>
+          </div>
+          <div class="p-4 border rounded-lg bg-black/40">
+            <h3>Kopi</h3>
+            <button onclick="choosePortion('Kopi')" class="btn">Buy</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== LOKASI ===================== -->
+    <section id="lokasi" class="bg-white shadow-lg rounded-xl p-6 fade-in">
+      <h2 class="text-2xl font-bold text-green-700 mb-4">📍 Lokasi Restoran</h2>
+      <div class="aspect-w-16 aspect-h-9">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.688112763342!2d104.0086!3d1.1185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d9893c9c21!2sRestoran%20Kampong%20Kite!5e0!3m2!1sid!2sid!4v1699999999999"
+          class="w-full h-96 rounded-lg border-2 border-green-600"
+          allowfullscreen=""
+          loading="lazy">
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="kontak" class="bg-green-700 text-white text-center py-6 mt-10">
+    <p>&copy; 2025 Restoran Kampong Kite | All Rights Reserved</p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    // Loading screen
+    window.addEventListener("load", function() {
+      const loading = document.getElementById("loading");
+      setTimeout(() => {
+        loading.classList.add("fade-out");
+        setTimeout(() => { loading.style.display = "none"; }, 1000);
+      }, 1500);
+    });
+
+    // Animasi fade-in
+    const sections = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add("show"); });
+    }, { threshold: 0.2 });
+    sections.forEach(section => observer.observe(section));
+
+    // Pilih porsi sebelum order
+    function choosePortion(item) {
+      const portion = confirm(`Pesan ${item} - Porsi Kecil? Klik Cancel untuk Porsi Besar`);
+      const chosen = portion ? `${item} - Porsi Kecil` : `${item} - Porsi Besar`;
+      choosePlatform(chosen);
+    }
+
+    // Pilih platform order
+    function choosePlatform(item) {
+      const viaWA = confirm(`Mau pesan ${item} lewat WhatsApp?\nKlik Cancel untuk Telegram`);
+      if (viaWA) {
+        const phone = "6285719253841";
+        const text = `Halo, saya ingin pesan: ${item}`;
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+        window.open(url, "_blank");
+      } else {
+        const text = `Halo, saya ingin pesan: ${item}`;
+        const url = `https://t.me/yanztiandi?text=${encodeURIComponent(text)}`;
+        window.open(url, "_blank");
+      }
+    }
+
+    // Toggle dark mode
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle("dark");
+    }
+  </script>
+</body>
+</html>
