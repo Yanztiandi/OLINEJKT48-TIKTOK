@@ -1,185 +1,196 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SnapTik Clone 1-Klik HD</title>
-  <style>
-    :root {
-      --bg: #f4f4f4;
-      --text: #000;
-      --card: #fff;
-      --btn: #ff0050;
-      --btnHover: #e60045;
-      --link: #eee;
-      --linkHover: #ddd;
-    }
-    [data-theme="dark"] {
-      --bg: #121212;
-      --text: #f4f4f4;
-      --card: #1e1e1e;
-      --btn: #ff3366;
-      --btnHover: #ff6699;
-      --link: #333;
-      --linkHover: #444;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      text-align: center;
-      padding: 40px;
-      transition: 0.3s;
-    }
-    .container {
-      max-width: 500px;
-      margin: auto;
-      background: var(--card);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: 0.3s;
-    }
-    input {
-      width: 80%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      background: var(--bg);
-      color: var(--text);
-    }
-    button {
-      padding: 12px 24px;
-      background: var(--btn);
-      color: white;
-      border: none;
-      cursor: pointer;
-      border-radius: 30px;
-      font-weight: bold;
-      transition: 0.3s;
-      margin-top: 10px;
-    }
-    button:hover {
-      background: var(--btnHover);
-      transform: scale(1.05);
-    }
-    #result {
-      text-align: center;
-      margin-top: 20px;
-    }
-    a {
-      display: block;
-      margin: 10px auto;
-      padding: 12px;
-      max-width: 300px;
-      background: var(--link);
-      border-radius: 30px;
-      text-decoration: none;
-      color: var(--text);
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    a:hover {
-      background: var(--linkHover);
-      transform: scale(1.03);
-    }
-    .toggle-theme {
-      margin-bottom: 20px;
-      cursor: pointer;
-      font-weight: bold;
-      text-decoration: underline;
-    }
-    .loading {
-      border: 6px solid #f3f3f3;
-      border-top: 6px solid var(--btn);
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      margin: 20px auto;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-    .thumbnail {
-      max-width: 100%;
-      border-radius: 12px;
-      margin-top: 10px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OLINEJKT48 SnapTik Clone Ultra</title>
+<style>
+body{
+  margin:0; padding:0; font-family:Arial,sans-serif;
+  background: url('https://files.catbox.moe/dkdkdv.jpeg') no-repeat center center fixed;
+  background-size: cover;
+  color:#fff; text-align:center;
+  overflow-x:hidden;
+  position:relative;
+}
+/* Partikel neon */
+.particle{
+  position:absolute; width:10px; height:10px; border-radius:50%; background:rgba(255,0,255,0.6);
+  animation: moveParticle 5s linear infinite;
+}
+@keyframes moveParticle{
+  0%{transform:translate(0,0);}
+  100%{transform:translate(calc(100vw - 10px), calc(100vh - 10px));}
+}
+
+/* Container transparan */
+.container{
+  max-width:600px; 
+  margin:50px auto; 
+  background: rgba(0,0,0,0); 
+  padding:30px; 
+  border-radius:15px;
+  position:relative;
+  z-index:2;
+}
+
+/* Header rainbow animasi */
+h1{
+  font-size:36px; font-weight:bold; 
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  animation: rainbow 5s linear infinite;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+}
+@keyframes rainbow{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* Input */
+input{
+  width:80%; padding:15px; border-radius:10px; border:none; margin:20px 0;
+  font-size:16px;
+}
+
+/* Tombol rainbow neon + glow + flash */
+button{
+  padding:15px 30px; border:none; border-radius:30px;
+  font-size:18px; font-weight:bold; cursor:pointer;
+  color:white; 
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+  background-size: 400% 400%;
+  animation: rainbowButton 4s ease infinite, glow 1.5s ease-in-out infinite alternate;
+  text-shadow: 1px 1px 2px #000;
+  position:relative; overflow:hidden;
+  outline:none; transition:0.3s;
+}
+button:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 25px rgba(255,255,255,0.9),0 0 50px rgba(255,0,255,0.7),0 0 75px rgba(0,255,255,0.5);
+}
+button span{
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  animation: blink 1s infinite;
+}
+@keyframes rainbowButton{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+@keyframes glow{
+  0%{box-shadow:0 0 5px rgba(255,255,255,0.3);}
+  100%{box-shadow:0 0 20px rgba(255,255,255,0.7);}
+}
+@keyframes blink{
+  0%,100%{opacity:1;} 50%{opacity:0.3;}
+}
+
+/* Result / Thumbnail */
+#result{ margin-top:20px; }
+.thumbnail{ max-width:100%; border-radius:15px; margin-top:10px; box-shadow:0 0 20px rgba(255,0,128,0.7);}
+
+/* Footer gradient bergerak */
+.footer{ 
+  margin-top:40px; font-weight:bold; font-size:20px; 
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  animation: footerGradient 6s linear infinite;
+  text-shadow:1px 1px 3px rgba(0,0,0,0.7);
+}
+@keyframes footerGradient{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* Spinner OLINEJKT48 */
+.loading{
+  border:6px solid #333; border-top:6px solid #ff0050;
+  border-radius:50%; width:50px; height:50px; margin:20px auto; animation:spin 1s linear infinite; position:relative;
+}
+.loading::after{
+  content:"OLINEJKT48"; position:absolute; top:50%; left:50%;
+  transform:translate(-50%,-50%); font-size:12px; font-weight:bold; color:#ff66aa;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+}
+@keyframes spin{
+  0%{transform:rotate(0deg);}
+  100%{transform:rotate(360deg);}
+}
+</style>
 </head>
-<body data-theme="light">
-  <div class="container">
-    <h1>SnapTik Clone 1-Klik HD</h1>
-    <p>Tempel URL TikTok → Klik Download HD langsung ke device!</p>
-    <div class="toggle-theme" onclick="toggleTheme()">🌙 Ganti Mode</div>
-    <input type="text" id="tiktokUrl" placeholder="Tempel URL TikTok di sini...">
-    <button onclick="downloadVideo()">Download HD</button>
-    <div id="result"></div>
-  </div>
+<body>
 
-  <script>
-    const API_KEY = "YOUR_RAPIDAPI_KEY"; // Ganti dengan API key RapidAPI TikTok
-    const API_HOST = "tiktok-api23.p.rapidapi.com"; // Host API TikTok
-    const API_URL = "https://tiktok-api23.p.rapidapi.com/video"; // URL API TikTok
+<!-- Partikel background -->
+<div id="particles"></div>
 
-    function toggleTheme() {
-      const body = document.body;
-      body.setAttribute("data-theme", body.getAttribute("data-theme") === "light" ? "dark" : "light");
-    }
+<div class="container">
+  <h1>OLINEJKT48 SnapTik Clone Ultra</h1>
+  <p style="text-shadow:1px 1px 2px rgba(0,0,0,0.7);">Tempel URL TikTok di bawah lalu klik Download HD</p>
+  <input type="text" id="tiktokUrl" placeholder="Tempel URL TikTok di sini...">
+  <button onclick="playClick();downloadVideo()"><span>OLINEJKT48</span> Download HD</button>
+  <div id="result"></div>
+  <div class="footer">OLINEJKT48</div>
+</div>
 
-    async function downloadVideo() {
-      const url = document.getElementById("tiktokUrl").value.trim();
-      const resultDiv = document.getElementById("result");
+<audio id="clickSound" src="https://freesound.org/data/previews/256/256113_3263906-lq.mp3"></audio>
 
-      if (!url) {
-        alert("Masukkan URL TikTok!");
-        return;
+<script>
+// Ganti YOUR_RAPIDAPI_KEY dengan API Key RapidAPI TikTok milikmu
+const API_KEY="YOUR_RAPIDAPI_KEY"; 
+const API_HOST="tiktok-api23.p.rapidapi.com";
+const API_URL="https://tiktok-api23.p.rapidapi.com/video";
+
+// Partikel neon
+for(let i=0;i<50;i++){
+  const p=document.createElement('div');
+  p.className='particle';
+  p.style.top=Math.random()*100+'%';
+  p.style.left=Math.random()*100+'%';
+  p.style.width=Math.random()*8+2+'px';
+  p.style.height=p.style.width;
+  document.body.appendChild(p);
+}
+
+function playClick(){
+  const audio=document.getElementById('clickSound');
+  audio.currentTime=0;
+  audio.play();
+}
+
+async function downloadVideo(){
+  const url=document.getElementById("tiktokUrl").value.trim();
+  const resultDiv=document.getElementById("result");
+  if(!url){alert("Masukkan URL TikTok!"); return;}
+  resultDiv.innerHTML='<div class="loading"></div>';
+  try{
+    const res=await fetch(`${API_URL}?url=${encodeURIComponent(url)}`,{
+      method:'GET',
+      headers:{'X-RapidAPI-Key':API_KEY,'X-RapidAPI-Host':API_HOST}
+    });
+    const data=await res.json();
+    if(data && data.video){
+      const video=data.video;
+      if(video.play_hd){
+        const a=document.createElement('a');
+        a.href=video.play_hd;
+        a.download='tiktok-video.mp4';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
       }
-      resultDiv.innerHTML = '<div class="loading"></div>';
-
-      try {
-        const res = await fetch(`${API_URL}?url=${encodeURIComponent(url)}`, {
-          method: 'GET',
-          headers: {
-            'X-RapidAPI-Key': API_KEY,
-            'X-RapidAPI-Host': API_HOST
-          }
-        });
-        const data = await res.json();
-
-        if (data && data.video) {
-          const video = data.video;
-          // Otomatis download HD
-          if (video.play_hd) {
-            const a = document.createElement('a');
-            a.href = video.play_hd;
-            a.download = 'tiktok-video.mp4';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-          }
-
-          resultDiv.innerHTML = `
-            <img src="${video.thumbnail}" class="thumbnail" alt="Thumbnail Video">
-            <p><b>Video berhasil didapat!</b></p>
-            <a href="${video.play}" target="_blank">Download Normal Tanpa Watermark</a>
-            <a href="${video.wmplay}" target="_blank">Download Dengan Watermark</a>
-            <a href="${video.music}" target="_blank">Download Audio (MP3)</a>
-          `;
-        } else {
-          resultDiv.innerHTML = "Gagal mengambil video!";
-        }
-      } catch (err) {
-        resultDiv.innerHTML = "Error: " + err.message;
-      }
-    }
-  </script>
+      resultDiv.innerHTML=`
+        <img src="${video.thumbnail}" class="thumbnail" alt="Thumbnail Video">
+        <p><b>Video berhasil didapat!</b></p>
+        <a href="${video.play}" target="_blank">Download Normal Tanpa Watermark</a>
+        <a href="${video.wmplay}" target="_blank">Download Dengan Watermark</a>
+        <a href="${video.music}" target="_blank">Download Audio (MP3)</a>
+      `;
+    }else{ resultDiv.innerHTML="Gagal mengambil video!"; }
+  }catch(err){ resultDiv.innerHTML="Error: "+err.message; }
+}
+</script>
 </body>
 </html>
